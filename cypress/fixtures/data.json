@@ -1,0 +1,20 @@
+{
+  "BASE_URL": "http://shop-in.ovh",
+
+  "email": "newuser1234@example.com",
+  "username": "ERR",
+  "password": "xxx",
+
+  "invalid_email": "invaliduser@example.com",
+  "invalid_password": "invalidPassword_123456",
+
+  "test_product_50e_plus": "Air Jordan 1 Low FlyEase",
+  "test_product_10e_minus": "Casquette de running",
+  "test_product_10e_equal": "Snapback Cap",
+  "test_product_50e_minus": "Brown Cap",
+
+  "promo_code": "PROMO24",
+  "invalid_promo_code": "promooo",
+
+  "promo_product": "Nike Air VaporMax 2021 FK"
+}
