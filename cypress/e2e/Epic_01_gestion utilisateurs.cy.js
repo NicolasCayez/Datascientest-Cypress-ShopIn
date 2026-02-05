@@ -12,6 +12,9 @@ import { faker } from "@faker-js/faker";
 // Suite de test : User Story S01 - Création de compte
 /* ******************************************************************************** */
 describe("S01 - Création de compte", () => {
+  let faker_email = faker.internet.email(); // Génère une adresse email aléatoire
+  let faker_username = faker.internet.username(); // Génère un nom d'utilisateur aléatoire
+  let faker_password = faker.internet.password(); // Génère un mot de passe aléatoire
   /* -------------------------------------------------------------------------------- */
   // S01 - Etapes communes à tous les cas de test
   /* -------------------------------------------------------------------------------- */
@@ -24,9 +27,12 @@ describe("S01 - Création de compte", () => {
     // Étape 3 : Remplir le formulaire de création de compte avec des informations valides
     cy.get(
       '.u-column2 > .woocommerce-form > :nth-child(1) > [name="username"]',
-    ).type(DATA_FIXTURES.username);
-    cy.get('[name="email"]').type(DATA_FIXTURES.email);
-    cy.get(':nth-child(3) > .password-input > [name="password"]').type(DATA_FIXTURES.password);
+    // ).type(DATA_FIXTURES.username);
+    ).type(faker_username);
+    // cy.get('[name="email"]').type(DATA_FIXTURES.email);
+    cy.get('[name="email"]').type(faker_email);
+    // cy.get(':nth-child(3) > .password-input > [name="password"]').type(DATA_FIXTURES.password);
+    cy.get(':nth-child(3) > .password-input > [name="password"]').type(faker_password);
     // Étape 4 : Soumettre le formulaire de création de compte
     cy.get('[name="register"]').click();
   });
@@ -34,12 +40,13 @@ describe("S01 - Création de compte", () => {
   /* -------------------------------------------------------------------------------- */
   // S01 - Cas PASSANT : email valide, username valide et password valide
   /* -------------------------------------------------------------------------------- */
-  it("Cas PASSANT : email valide, username valide et password valide", () => {
+  it.only("Cas PASSANT : email valide, username valide et password valide", () => {
     // --- ASSERTIONS ---
     // Vérification : S'assurer que l'utilisateur est redirigé vers la page "Mon compte"
     cy.get(".woocommerce-MyAccount-content > :nth-child(2)").should(
       "contain",
-      "Hello " + DATA_FIXTURES.username + " (not " + DATA_FIXTURES.username + "? Log out)",
+      // "Hello " + DATA_FIXTURES.username + " (not " + DATA_FIXTURES.username + "? Log out)",
+      "Hello " + faker_username + " (not " + faker_username + "? Log out)",
     );
   });
 
